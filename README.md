@@ -25,7 +25,7 @@ Les données sont issues des publications de [Kleinbaum & Klein (2012)](https://
 * ___rx___
     Groupe d'appartenance : 1=Contrôle 0 =Traitement <br/> <br/>
 
-### RESULTATS <br/> <br/>
+### RESULTATS <br/>
 
 __1. Vérification des données__ <br/>
 Tout d'abord, nous allons visualiser les données de la base. Nous exécutons les commandes ci-dessous. La première commande permet de définir le chemin d'accès du fichier contenant la base de données. Notre fichier est contenu ici dans le répertoire `data` qui est à son tour dans le dossier `cancer-treatment-effect` du répertoire `github` sur le bureau de notre ordinateur. Vous devez donc changer le chemin suivant l'endroit où vous avez enregistré la base de données. Une fois la librairie définie, la deuxième commande permet de charger la base de données sous le nom de `remission`, et les deux dernières commandes affichent les propriétés de la base. Les premiers résultats sont affichés ci-dessous. Le premier tableau (à gauche) confirme qu'il y a 42 observations et 5 variables dans la base `remission`. Le deuxième (à droite) présente le nom et une courte description des variables. Et au dernier tableau, nous avons un aperçu des cinq premières observations. Ces premiers patients sont de sexe masculin, ils font partie du groupe de traitement et n'ont pas connu la rechute pendant leur temps passé dans l'expérience.
