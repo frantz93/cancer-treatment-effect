@@ -40,11 +40,12 @@ run;
 proc print data = remission (obs=5);
 run;
 `````
-Les premiers résultats affichés ci-dessous confirme que
-
-<img src="https://user-images.githubusercontent.com/105858731/184566849-952f1283-5211-4650-ad8c-c66e5c4239d4.png" width="500">
-
-
+Les premiers résultats sont affichés ci-dessous. A gauche, la confirmation nous avons 42 observations et 5 variables dans la base `remission`. A droite, un aperçu des variables et cinq premières observations.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105858731/184566849-952f1283-5211-4650-ad8c-c66e5c4239d4.png" width="400" height="220">
+<img src="https://user-images.githubusercontent.com/105858731/184567492-bb5624ab-9a04-44af-898c-88b73737ba17.png" width="400" height="220"> <br/>
+<img src="https://user-images.githubusercontent.com/105858731/184568209-556d5c20-6fcf-4932-967c-d2dc6be8cb66.png" width="300" height="150">
+</p>
 
 
 <br /> <br /> <br />
