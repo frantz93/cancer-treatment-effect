@@ -24,7 +24,7 @@ Les données sont issues des publications de [Kleinbaum & Klein (2012)](https://
     Groupe d'appartenance : 1=Contrôle 0 =Traitement <br /> <br />
 
 __RESULTATS__ <br />
-Tout d'abord, nous allons visualiser les données de la base. Nous exécutons les commandes ci-dessous. La première commande permet de définir le chemin d'accès du fichier contenant la base de données. Notre fichier est contenu ici dans le répertoire `data` qui est à son tour dans le dossier `cancer-treatment-effect\data` du répertoire `github` sur le bureau de notre ordinateur. Vous devez donc changer le chemin suivant l'endroit où vous avez enregistré la base de données. Une fois la librairie définie, la deuxième commande permet de charger la base de données sous le nom de `remission`, et les deux dernières commandes affichent les propriétés de la base.
+Tout d'abord, nous allons visualiser les données de la base. Nous exécutons les commandes ci-dessous. La première commande permet de définir le chemin d'accès du fichier contenant la base de données. Notre fichier est contenu ici dans le répertoire `data` qui est à son tour dans le dossier `cancer-treatment-effect` du répertoire `github` sur le bureau de notre ordinateur. Vous devez donc changer le chemin suivant l'endroit où vous avez enregistré la base de données. Une fois la librairie définie, la deuxième commande permet de charger la base de données sous le nom de `remission`, et les deux dernières commandes affichent les propriétés de la base.
 `````
 /*Designation de la librairie*/
 libname tp 'C:\Users\user\Desktop\github\cancer-treatment-effect\data';
@@ -40,6 +40,9 @@ run;
 proc print data = remission (obs=5);
 run;
 `````
+Les premiers résultats affichés ci-dessous confirme que
+
+![out1](/ouput/img/out1.jpg)
 
 
 <br /> <br /> <br />
