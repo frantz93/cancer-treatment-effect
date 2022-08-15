@@ -9,7 +9,7 @@ Les entreprises du secteur médical (pharmacie, hôpitaux,...) sont souvent appe
 <br/>
 
 ### METHODES <br/>
-L'efficacité du traitement est mesurée ici comme sa capacité à arrêter ou retarder la rechute du malade (réaparition des symptomes). Notre variable d'intérêt est donc la durée de remission du patient à partir de l'administration du traitement et jusqu'à la rechute. Par conséquent, nous allons faire appel aux méthodes statistiques de modélisation du temps pour aboutir à des résultats concluants. Il s'agit des méthodes utilisées en __analyse de survie__ ou __analyse de durée de vie__. Nous utiliserons le modèle de Kaplan Meier et le modèle de Cox pour explorer et modéliser les données. Les commandes seront exécuter sur __SAS__ mais il est également possible de réaliser l'analyse sur d'autres logiciels tels que R, Phyton, Stata ou SPSS. <br/>
+L'efficacité du traitement est mesurée ici comme sa capacité à arrêter ou retarder la rechute du malade (réaparition des symptomes). Notre variable d'intérêt est donc la durée de remission du patient à partir de l'administration du traitement et jusqu'à la rechute. Par conséquent, nous allons faire appel aux méthodes statistiques de modélisation du temps pour aboutir à des résultats concluants. Il s'agit des méthodes utilisées en __analyse de survie__ ou __analyse de durée de vie__. Nous utiliserons le modèle de Kaplan Meier (KM) et le modèle de Cox pour explorer et modéliser les données. Les commandes seront exécuter sur __SAS__ mais il est également possible de réaliser l'analyse sur d'autres logiciels tels que R, Phyton, Stata ou SPSS. <br/>
 <br/>
 
 ### DONNEES <br/>
@@ -67,7 +67,7 @@ run;
 </p>
 <br/>
 
-Décomposons maintenant la courbe de survie suivant les caractéristiques distinctives des patients (sexe, groupe d'appartenance, et taux de globules blancs). Les commandes exécutées sur SAS suivies des résultats sont donnés ci-dessous. Le croisement des courbes indique un absence de différence significative entre les groupes. C'est le cas entre les femmes et les hommes qui se comportent de la même manière quant à la durée de survie. Cependant, nous voyons une différence entre les individus appartenant au groupe de traitement et ceux du groupe de contrôle. Les premiers ont un temps de survie plus long comparativement aux seconds.
+Décomposons maintenant la courbe de survie suivant les caractéristiques distinctives des patients (sexe, groupe d'appartenance). Les commandes exécutées sur SAS suivies des résultats sont donnés ci-dessous. Le croisement des courbes indique un absence de différence significative entre les groupes. C'est le cas entre les femmes et les hommes qui se comportent de la même manière quant à la durée de survie. Cependant, nous voyons une différence entre les individus appartenant au groupe de traitement et ceux du groupe de contrôle. Les premiers ont un temps de survie plus long comparativement aux seconds.
 
 `````
 /*Estimation non parametrique avec le sexe comme variable categorielle*/
@@ -86,6 +86,34 @@ run;
 <img src="https://user-images.githubusercontent.com/105858731/184578692-9ad77eae-1214-4fcf-8205-78eaf5fc2375.png" width="440">
 </p>
 <br/>
+
+Nous analysons maintenant par rapport à la quantité de globules blancs dans le sang. En examinant la distribution de la variable `logWBC`, nous notons que les patients sont équitablement répartis autour d'un niveau médian de 2.8. Nous pouvons donc décomposer notre échantillon en deux groupes : les patients ayant un niveau élevé de leucocytes (1) et ceux ayant un niveau faible de leucocytes (0). La deuxième commande ci-dessous conduit à créer cette nouvelle variable de calcul dans la base de données. La dernière commande permet ensuite de lancer la procédure d'estimation par le modèle KM et produit la sortie graphique plus bas. Outre l'appartenance aux groupes (traitement vs contrôle), nous remarquons aussi que le taux de globules blancs du sang a un impact sur le temps de survie des individus. En effet, les patients qui ont un taux faibles de globules blancs mettent plus de temps avant la rechute comparé à ceux ayant un taux élevé de globules blancs. 
+
+`````
+/*Statistiques descriptive sur la quantite de globules blancs*/
+proc univariate data=remission;
+var logWBC;
+run;
+
+/*Transformation d'une variable discrete en variable continue*/
+data remission;
+set remission;
+logWBC = .;
+if logWBC > 2.8 then LWBC = 1;
+else LWBC = 0;
+run;
+
+/*Estimation non parametrique avec le niveau de globules blancs comme variable categorielle*/
+proc lifetest data=remission method=KM;
+time time*status(0) ;
+strata LWBC;
+run;
+`````
+<p align="center">
+<img src="https://user-images.githubusercontent.com/105858731/184580795-75d18fbd-0926-47f0-9cfa-711face52ab4.png" width="500">
+</p>
+<br/>
+
 
 __2. Analyse paramétrique__ <br/>
 ...

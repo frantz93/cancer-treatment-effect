@@ -16,9 +16,8 @@ run;
 /*Changement etiquette des donnees (optionnel)*/
 data remission;
 set remission;
-label ID="identifiant" LWBC="quantite globules blancs"
-RX="groupes(controle=1 traitement=0)" sexe="sexe(homme=1 femme=0)"
-statut="statut(rechute=1 censure=0)" survie="duree remission avant rechute(semaines)";
+label logWBC="quantite globules blancs" rx="groupes(controle=1 traitement=0)" sex="sexe(homme=1 femme=0)"
+status="statut(rechute=1 censure=0)" time="duree remission avant rechute(semaines)";
 run;
 
 proc contents data=remission;	*resultat du changement;
@@ -45,13 +44,13 @@ run;
 /*Remarque : avoir les stats sans la courbe de survie = remplacer noprint par notable*/
 
 proc lifetest notable data=remission method=KM;
-time survie*statut(0) ;
+time time*status(0);
 run;
 
 /*Etape 2 : Estimation non parametrique : modele actuariel*/
 
 proc lifetest data=remission method=act;
-time survie*statut(0) ;
+time time*status(0);
 run;
 
 
@@ -59,35 +58,35 @@ run;
 
 /*Estimation non parametrique avec le sexe comme variable categorielle*/
 proc lifetest data=remission method=KM;
-time survie*statut(0) ;
-strata sexe;
+time time*status(0);
+strata sex;
 run;
 *En observant le graphique, on remarque autour de 11 semaine qu'il y a un changement de tendance dans les fonctions de survie des deux groupes (H et F).
 le temps de survie des femmes qui etait plus eleve au depart est rendu plus faible par rapport a celui des hommes apres environ 11 semaines;
 
 /*Estimation non parametrique avec RX comme variable categorielle*/
 proc lifetest data=remission method=KM;
-time survie*statut(0) ;
-strata RX;
+time time*status(0);
+strata rx;
 run;
 
 /*Statistiques descriptive sur la quantite de globules blancs*/
 proc univariate data=remission;
-var LWBC;
+var logWBC;
 run;
 *La mediane est 2.8, donc on considerera cette valeur pour distinguer les individus a quantite de globules blancs eleve (LWBC > 2.8) versus ceux avec un faible niveau de globules blancs (LWBC < ou = 2.8);
 
 /*Transformation d'une variable discrete en variable continue*/
 data remission;
 set remission;
-LWBC2 = .;
-if LWBC > 2.8 then LWBC2 = 1;
-else LWBC2 = 0;
+LWBC = .;
+if logWBC > 2.8 then LWBC = 1;
+else LWBC = 0;
 run;
 
 /*Affichage de la nouvelle variable cree*/
 proc print data=remission;
-var LWBC LWBC2;
+var logWBC LWBC;
 run;
 
 /*Estimation non parametrique avec le niveau de globules blancs comme variable categorielle*/
