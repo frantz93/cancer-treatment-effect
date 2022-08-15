@@ -116,7 +116,7 @@ run;
 
 
 __2. Analyse paramétrique__ <br/>
-Dans la précédente analyse, nous avons vu que le temps de rémission des patients atteints du cancer est impacté positivement par le traitement médicamenteux proposé. Mais un temps de remission plus long peut être lié également au fait que le patient a un faible niveau de leucocytes dans le sang. Nous pouvons donc être plus certains de l'impact du traitement en intégrant, dans un modèle, les différentes variables explicatives dont le sexe et le niveau de leucocytes. Nous pourrons ainsi vérifier si le traitement améliore réellement la santé des patients et à quel niveau. 
+Dans la précédente analyse, nous avons vu que le temps de rémission des patients atteints du cancer est impacté positivement par le traitement médicamenteux proposé. Mais un temps de remission plus long peut être lié également au fait que le patient a un faible niveau de leucocytes dans le sang. Nous ne pouvons donc être certains de l'impact du traitement qu'en intégrant, dans un modèle, les différentes variables explicatives dont le sexe et le niveau de leucocytes. Cela permettra de vérifier si le traitement améliore réellement la santé des patients et à quel niveau. 
 
 <br /> <br /> <br />
 
