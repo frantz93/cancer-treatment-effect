@@ -1,11 +1,9 @@
-﻿libname tp 'C:\Users\user\Desktop\github\cancer-treatment-effect\data';
+/*Designation de la librairie*/
+libname tp 'C:\Users\user\Desktop\github\cancer-treatment-effect\data';
 
 /*Chargement de la base de données*/
-proc import out = work.remission                                                                                                           
-            datafile = "C:\Users\user\Desktop\github\cancer-treatment-effect\data\leukemia.csv"                        
-            dbms = csv  replace;                                                                                                     
-     		getnames = yes;
-			label time = 'survival time' status = 'censoring status' sex = 'sex' logWBC = 'log white blood cell count' rx = 'treatment status';
+data remission;
+set tp.leukemia;
 run;
 
 /*Affichage du contenu de la base de donnees*/
@@ -14,20 +12,16 @@ run;
 proc print data = remission (obs=5);
 run;
 
+
+/*Changement etiquette des donnees (optionnel)*/
 data remission;
 set remission;
-label time = 'survival time' status = 'censoring status' sex = 'sex' logWBC = 'log white blood cell count' rx = 'treatment status';
-run;
-
-/*Changement etiquette des donnees*/
-data remission;
-set tp.remission;
 label ID="identifiant" LWBC="quantite globules blancs"
 RX="groupes(controle=1 traitement=0)" sexe="sexe(homme=1 femme=0)"
 statut="statut(rechute=1 censure=0)" survie="duree remission avant rechute(semaines)";
 run;
 
-proc contents data=remission;
+proc contents data=remission;	*resultat du changement;
 run;
 
 
@@ -39,13 +33,13 @@ run;
 /* Etape 1 : Estimation non parametrique : modele de K-M*/
 
 proc lifetest data=remission method=KM conftype=linear plots=(h);
-time survie*statut(0) ;
+time time*status(0);
 run;
 
-/*Remarque : avoir la courbe de survie sans les stats = ajouter l'option noprint*/
+/*Remarque : pour avoir la courbe de survie sans les stats = ajouter l'option noprint*/
 
 proc lifetest noprint data=remission method=KM;
-time survie*statut(0) ;
+time time*status(0) ;
 run;
 
 /*Remarque : avoir les stats sans la courbe de survie = remplacer noprint par notable*/
