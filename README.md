@@ -82,8 +82,8 @@ strata rx;
 run;
 `````
 <p align="center">
-<img src="https://user-images.githubusercontent.com/105858731/184578554-8ac7678c-ca91-4f1e-af70-6167bc646a56.png" width="450">
-<img src="https://user-images.githubusercontent.com/105858731/184578692-9ad77eae-1214-4fcf-8205-78eaf5fc2375.png" width="450">
+<img src="https://user-images.githubusercontent.com/105858731/184578554-8ac7678c-ca91-4f1e-af70-6167bc646a56.png" width="440">
+<img src="https://user-images.githubusercontent.com/105858731/184578692-9ad77eae-1214-4fcf-8205-78eaf5fc2375.png" width="440">
 </p>
 <br/>
 
