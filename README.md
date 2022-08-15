@@ -1,6 +1,6 @@
 # Cancer Treatment Effect #
 ### Assessing the effacy of a leukemia treatment on the lifespan of patients (survival analysis) / Evaluation de l'efficacité d'un traitement contre la leucémie sur la durée de vie des patients (analyse de survie) <br />
-Cette étude illustre les contributions que je suis en mesure d'apporter au sein des entreprises du secteur médical.
+Cette étude illustre les contributions que je suis en mesure d'apporter au sein des entreprises du secteur médical. :hospital: :pill:
 - - - -
 <br />
 
