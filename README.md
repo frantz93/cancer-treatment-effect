@@ -5,7 +5,7 @@ Cette étude illustre les contributions que je suis en mesure d'apporter au sein
 <br />
 
 ### CONTEXTE <br/>
-Les entreprises du secteur médical (pharmacie, hôpitaux,...) sont souvent appelées à réaliser des recherches expérimentales pour vérifier l'efficacité des traitements contre les maladies. En général, les traitements administrés peuvent s'attaquer à la cause de la maladie (traitement de la cause) ou simplement viser à soulager l'individu des effets perturbateurs (traitement symptomatique). Les traitements impliquent, entre autres : _les médicaments, la chirurgie, la radiothérapie, la chimiothérapie, la kinésithérapie etc._ Je traiterai ici de l'expérimentation d'un traitement médicamenteux contre le cancer du sang (leucémie). L'objectif est d'analyser l'efficacité de ce traitement suivant deux caractéristiques individuelles soit le sexe et la quantité de leucocytes sanguins. <br/>
+Les entreprises du secteur médical (pharmacie, hôpitaux,...) sont souvent appelées à réaliser des recherches expérimentales pour vérifier l'efficacité des traitements contre les maladies. En général, les traitements administrés peuvent s'attaquer à la cause de la maladie (traitement curatif) ou simplement viser à soulager l'individu des effets perturbateurs (traitement symptomatique). Les traitements impliquent, entre autres : _les médicaments, la chirurgie, la radiothérapie, la chimiothérapie, la kinésithérapie etc._ Je traiterai ici de l'expérimentation d'un traitement médicamenteux contre le cancer du sang (leucémie). L'objectif est d'analyser l'efficacité de ce traitement suivant deux caractéristiques individuelles soit le sexe et la quantité de leucocytes sanguins. <br/>
 <br/>
 
 ### METHODES <br/>
