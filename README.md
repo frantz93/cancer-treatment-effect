@@ -42,7 +42,9 @@ run;
 `````
 Les premiers résultats affichés ci-dessous confirme que
 
-![out1](/ouput/img/out1.jpg)
+<img src="https://user-images.githubusercontent.com/105858731/184566849-952f1283-5211-4650-ad8c-c66e5c4239d4.png" width="500">
+
+
 
 
 <br /> <br /> <br />
