@@ -5,7 +5,7 @@ Cette étude illustre les contributions que je suis en mesure d'apporter au sein
 <br />
 
 ### CONTEXTE <br/>
-Les entreprises du secteur médical (pharmacie, hôpitaux,...) sont souvent appelées à réaliser des recherches expérimentales pour vérifier l'efficacité des traitements contre les maladies. En général, les traitements administrés peuvent s'attaquer à la cause de la maladie (traitement curatif) ou simplement viser à soulager l'individu des effets perturbateurs (traitement symptomatique). Les traitements impliquent, entre autres : _les médicaments, la chirurgie, la radiothérapie, la chimiothérapie, la kinésithérapie etc._ Je traiterai ici de l'expérimentation d'un traitement médicamenteux contre le cancer du sang (leucémie). L'objectif est d'analyser l'efficacité de ce traitement suivant deux caractéristiques individuelles soit le sexe et la quantité de leucocytes sanguins. <br/>
+Les entreprises du secteur médical (pharmacies, hôpitaux,...) sont souvent appelées à réaliser des recherches expérimentales pour vérifier l'efficacité des traitements contre les maladies. En général, les traitements administrés peuvent s'attaquer à la cause de la maladie (traitement curatif) ou simplement viser à soulager l'individu des effets perturbateurs (traitement symptomatique). Les traitements impliquent, entre autres : _les médicaments, la chirurgie, la radiothérapie, la chimiothérapie, la kinésithérapie etc._ Je traiterai ici de l'expérimentation d'un traitement médicamenteux contre le cancer du sang (leucémie). L'objectif est d'analyser l'efficacité de ce traitement suivant deux caractéristiques individuelles soit le sexe et la quantité de leucocytes sanguins. <br/>
 <br/>
 
 ### METHODES <br/>
@@ -13,7 +13,7 @@ L'efficacité du traitement est mesurée ici comme sa capacité à arrêter ou r
 <br/>
 
 ### DONNEES <br/>
-Les données sont issues des publications de [Kleinbaum & Klein (2012)](https://link.springer.com/book/10.1007/0-387-29150-4 "Kleinbaum, D.G. and Klein, M. (2012) Survival Analysis - A Self-Learning Text, 3rd ed., Springer") contenues dans le fichier `leukemia.sas7bdat` du répertoire `data`. Les versions `.rda` et `.csv` de la base figurent également dans ledit répertoire pour faciliter l'analyse éventuellement sur d'autre logiciel. Ci-dessous, nous décrivons les différentes variables présentes dans la base.
+Les données sont issues des publications de [Kleinbaum & Klein (2012)](https://link.springer.com/book/10.1007/0-387-29150-4 "Kleinbaum, D.G. and Klein, M. (2012) Survival Analysis - A Self-Learning Text, 3rd ed., Springer") et contenues dans le fichier `leukemia.sas7bdat` du répertoire `data`. Les versions `.rda` et `.csv` de la base figurent également dans ledit répertoire pour faciliter l'analyse éventuellement sur d'autres logiciels. Ci-dessous, nous décrivons les différentes variables présentes dans la base.
 * ___time___
     Temps de survie (en semaines)
 * ___status___
@@ -116,7 +116,7 @@ run;
 
 
 __2. Analyse paramétrique__ <br/>
-...
+Dans la précédente analyse, nous avons vu que le temps de rémission des patients atteints du cancer est impacté positivement par le traitement médicamenteux proposé. Mais un temps de remission plus long peut être lié également au fait que le patient a un faible niveau de leucocytes dans le sang. Nous pouvons donc être plus certains de l'impact du traitement en intégrant, dans un modèle, les différentes variables explicatives dont le sexe et le niveau de leucocytes. Nous pourrons ainsi vérifier si le traitement améliore réellement la santé des patients et à quel niveau. 
 
 <br /> <br /> <br />
 
