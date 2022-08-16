@@ -1,6 +1,6 @@
 # Cancer Treatment Effect #
 ### Assessing the efficacy of a leukemia treatment for expanding the remission time of patients (survival analysis) / Evaluation de l'efficacité d'un traitement contre la leucémie pour prolonger le temps de rémission des patients (analyse de survie) <br />
-Cette étude illustre les contributions que je suis en mesure d'apporter au sein des entreprises du secteur médical.:hospital::pill:
+Cette étude illustre les contributions que je peux apporter au sein des entreprises du secteur médical.:hospital::pill:
 - - - -
 <br />
 
