@@ -142,9 +142,29 @@ proc phreg data=remission;
 model time*status(0) = rx logWBC /rl;
 run;
 `````
-<p align="center"> <img src='https://user-images.githubusercontent.com/105858731/184966118-07a78a11-aa00-46a9-aec9-27fd1d6201bc.png' width='1000'/> </p>
+<p align="center"> <img src='https://user-images.githubusercontent.com/105858731/184966118-07a78a11-aa00-46a9-aec9-27fd1d6201bc.png' width='1000'/> </p> </br>
 
-En conclusion, le traitement anticancéreux expérimenté ici peut être recommandé aux malades pour lutter contre la rechute.
+Alors que le traitement augmente le temps de rémission des malades, l'augmentation du taux de globules blancs dans le sang entraine l'effet inverse. Nous pouvons donc vérifier quel effet est dominant en comparant l'effet du traitement sur les malades ayant un taux élevé versus ceux qui ont un faible taux de globule blancs. Les deux commandes suivantes nous permettent d'obtenir les graphiques des courbes de survie des patients suivant le niveau de globules blancs dans le sang et le groupe d'appartenance (traitement vs contrôle).
+`````
+/*Vérification de l'effet du traitement dans le groupe avec un faible taux de globule blancs*/
+proc lifetest data=remission method=KM;
+time time*status(0);
+strata rx; where LWBC=0;
+run;
+
+/*Vérification de l'effet du traitement dans le groupe avec un taux élevé de globule blancs*/
+proc lifetest data=remission method=KM;
+time time*status(0);
+strata rx; where LWBC=1;
+run;
+`````
+Les résultats ci-dessous montrent que le traitement a un impact sur les individus qui ont un faible taux de globules blancs. Dans ce groupe, ceux qui reçoivent le traitement on un temps de rémission beaucoup plus long par rapport aux autres. Toutefois, dans chez les personnes qui ont un taux élevé de globules blancs, le traitement n'a aucun effet significatif sur le temps de rémission. L'effet -quantité de globules blancs- est donc dominant sur l'effet -traitement-.
+En conclusion, le traitement anticancéreux expérimenté ici peut donc être recommandé pour lutter contre la rechute mais cette recommandation doit être adressée aux malades qui ont un faible taux de globules blancs dans le sang.
+
+<p align='center'>
+    <img src='https://user-images.githubusercontent.com/105858731/184975790-e6372d45-afe0-47fa-a671-15f36176fa71.png' width=450 >
+    <img src='https://user-images.githubusercontent.com/105858731/184976339-96818e3f-cd44-4faf-a9e7-a8a446fe5982.png' width=450 >
+</p>
 
 <br /> <br /> <br />
 
