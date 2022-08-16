@@ -1,5 +1,5 @@
 # Cancer Treatment Effect #
-### Assessing the efficacy of a leukemia treatment for expanding the remission time of patients (survival analysis) / Evaluation de l'efficacité d'un traitement contre la leucémie pour prolonger le temps de remission des patients (analyse de survie) <br />
+### Assessing the efficacy of a leukemia treatment for expanding the remission time of patients (survival analysis) / Evaluation de l'efficacité d'un traitement contre la leucémie pour prolonger le temps de rémission des patients (analyse de survie) <br />
 Cette étude illustre les contributions que je suis en mesure d'apporter au sein des entreprises du secteur médical. :hospital: :pill:
 - - - -
 <br />
@@ -9,7 +9,7 @@ Les entreprises du secteur médical (pharmacies, hôpitaux,...) sont souvent app
 <br/>
 
 ### METHODES <br/>
-L'efficacité du traitement est mesurée ici comme sa capacité à prolonger la remission du malade, autrement dit, à arrêter ou retarder la rechute (réaparition des symptômes). Notre variable d'intérêt est donc la durée de remission du patient à compter du début d'administration du traitement jusqu'à la rechute. Etant donné que la variable d'intérêt est le temps, nous ne pouvons pas utilisé les méthodes statistiques classiques basées sur la loi normale pour étudier ce phénomène. Nous allons faire appel aux méthodes de modélisation du temps pour aboutir à des résultats concluants. Il s'agit des méthodes utilisées en __analyse de survie__ ou __analyse de durée de vie__. Nous utiliserons le modèle de Kaplan Meier (KM) et le modèle de Cox pour explorer et modéliser les données. Les commandes seront exécuter sur __SAS__ mais il est également possible de réaliser l'analyse sur d'autres logiciels tels que R, Phyton, Stata ou SPSS. <br/>
+L'efficacité du traitement est mesurée ici comme sa capacité à prolonger la rémission du malade, autrement dit, à arrêter ou retarder la rechute (réaparition des symptômes). Notre variable d'intérêt est donc la durée de rémission du patient à compter du début d'administration du traitement jusqu'à la rechute. Etant donné que la variable d'intérêt est le temps, nous ne pouvons pas utilisé les méthodes statistiques classiques basées sur la loi normale pour étudier ce phénomène. Nous allons faire appel aux méthodes de modélisation du temps pour aboutir à des résultats concluants. Il s'agit des méthodes utilisées en __analyse de survie__ ou __analyse de durée de vie__. Nous utiliserons le modèle de Kaplan Meier (KM) et le modèle de Cox pour explorer et modéliser les données. Les commandes seront exécuter sur __SAS__ mais il est également possible de réaliser l'analyse sur d'autres logiciels tels que R, Phyton, Stata ou SPSS. <br/>
 <br/>
 
 ### DONNEES <br/>
@@ -52,7 +52,7 @@ run;
 </p>
 
 __1. Analyse non paramétrique__ <br/>
-Le modèle Kaplan Meier peut être utilisé pour réaliser les estimations sur notre échantillon puisqu'il est petit. Nous ainsi estimons une première courbe de survie dite globale de l'échantillon. Cette courbe nous renseigne sur l'évolution de la probabilité de survie de tous les patients répartis en un seul groupe. La courbe est classique (décroissante dans le temps). Au début de l'expérience, la proportion d'individus qui n'ont pas connu la rechute est de 100% alors qu'elle est réduite à moins de 20% au delà de 23 semaines. Sur les 42 patients, 30 (71.4%) ont connu la rechute pendant l'expérience et les 12 autres ont été censurés. Ce dernier groupe regroupe les patients qui ont terminé l'expérience en état de remission ou bien ont laissé l'expérience avant la fin. Le temps moyen de survie des patients est de 13 semaines, mais la majorité ont une survie inférieure à la moyenne (mediane < moyenne). Les estimations aux quartiles montrent que 75% des patients sont restés en remission jusqu'à 23 semaines, 50% jusqu'à 12 semaines et 25% jusqu'à 6 semaines.
+Le modèle Kaplan Meier peut être utilisé pour réaliser les estimations sur notre échantillon puisqu'il est petit. Nous ainsi estimons une première courbe de survie dite globale de l'échantillon. Cette courbe nous renseigne sur l'évolution de la probabilité de survie de tous les patients répartis en un seul groupe. La courbe est classique (décroissante dans le temps). Au début de l'expérience, la proportion d'individus qui n'ont pas connu la rechute est de 100% alors qu'elle est réduite à moins de 20% au delà de 23 semaines. Sur les 42 patients, 30 (71.4%) ont connu la rechute pendant l'expérience et les 12 autres ont été censurés. Ce dernier groupe regroupe les patients qui ont terminé l'expérience en état de rémission ou bien ont laissé l'expérience avant la fin. Le temps moyen de survie des patients est de 13 semaines, mais la majorité ont une survie inférieure à la moyenne (mediane < moyenne). Les estimations aux quartiles montrent que 75% des patients sont restés en rémission jusqu'à 23 semaines, 50% jusqu'à 12 semaines et 25% jusqu'à 6 semaines.
 
 `````
 /*Estimation non parametrique : modele de K-M*/
@@ -116,8 +116,24 @@ run;
 
 
 __2. Analyse paramétrique__ <br/>
-Dans la précédente analyse, nous avons vu que le temps de rémission des patients atteints du cancer est impacté positivement par le traitement médicamenteux proposé. Mais un temps de remission plus long peut être lié également au fait que le patient a un faible niveau de leucocytes dans le sang. Nous ne pouvons donc être certain de l'impact du traitement qu'en intégrant, dans un modèle, les différentes variables explicatives dont le sexe et le niveau de leucocytes. Cela permettra de vérifier si le traitement améliore effectivement la santé des patients et à quel niveau. 
+Dans la précédente analyse, nous avons vu que le temps de rémission des patients atteints du cancer est impacté positivement par le traitement médicamenteux proposé. Mais un temps de rémission plus long peut être lié également au fait que le patient a un faible niveau de leucocytes dans le sang. Nous ne pouvons donc être certain de l'impact du traitement qu'en intégrant, dans un modèle, différentes variables explicatives dont le niveau de leucocytes. Cela permettra de vérifier si le traitement améliore effectivement la santé des patients et à quel niveau. Nous utilisons le modèle de Cox de risque proportionnel pour estimer l'équation de la fonction de risque de rechute des patients. L'équation est la suivante : <img src="https://latex.codecogs.com/svg.image?h(t)&space;=&space;h_{0}(t)e^{\beta_{1}*RX&plus;\beta_{2}*logWBC&plus;\beta_{3}*[RX*logWBC]" title="Equation de la fonction de risque" />; avec <img src="https://latex.codecogs.com/svg.image?h_{0}" /> le risque de base commun à tous les patients, <img src="https://latex.codecogs.com/svg.image?\beta_{i}" /> le coefficient de régression de la variable i, et <img src="https://latex.codecogs.com/svg.image?[RX*logWBC]" /> la variable d'intéraction entre le traitement et le niveau de globule blancs dans le sang. L'estimation est réalisée par maximum de vraissemblance en exécutant les commandes ci-dessous. La première commande crée la variable d'interaction dans la base et la seconde estime l'équation de la fonction de risque.
+
+`````
+/*Creation de la variable d'interaction*/
+data remission;
+set remission;
+rx_logwbc = rx * logWBC;
+label rx_logwbc = 'interaction variable';
+run;
+
+/*Estimation semi-parametrique avec variables d'interaction*/
+proc phreg data=remission;
+model time*status(0) = rx logWBC rx_logwbc /rl; *rl est l'option qui permet d'ajouter des intervalles de confiance;
+run;
+`````
+Le résultat final peut être interprété à partir du tableau ci-dessous. Les noms des variables sont affichés dans la colonne `Paramètre` et les coefficients <img src="https://latex.codecogs.com/svg.image?\beta_{i}" /> dans la colonne `Valeur estimée des paramètres`. La colonne `Pr > Khi-2` donne les p-values du test de significativité sur chaque coefficient du modèle. On constate que seul le coefficient de la variable ___logWBC___ est significatif (α<0.5). Par conséquent, il n'y a que le taux de leucocytes sanguins qui explique véritablement le temps de rémission d'un patient. L'impact de cette variable en termes de ratio de risque figure dans la colonne "Rapport de risque". Lorsque le logarithme de la quantité de leucocytes augmente d'1 unité, l'individu a 6 fois plus de risque de connaitre la rechute. Considérant que le coefficient de la variable ___rx___ n'est pas significatif (α=0.16), l'effet du traitement médicamenteux proposé ne s'avère pas concluant à la lumière du modèle. Donc malheureusement, ce traitement anticancéreux ne peut pas être recommandé aux malades pour lutter contre la rechute.
+<p align="center"> <img src='https://user-images.githubusercontent.com/105858731/184936992-0d6ff1a9-996e-4461-b690-24f9a0c1effe.png' width='1000'/> </p> </br>
 
 <br /> <br /> <br />
 
-****** _Rédaction en cours_ ******
+<p align='center'> ******************************************************** ©FRPDJ - 16/08/2022 *********************************************************** </p>
