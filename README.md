@@ -150,12 +150,14 @@ Alors que le traitement augmente le temps de rémission des malades, l'augmentat
 proc lifetest data=remission method=KM;
 time time*status(0);
 strata rx; where LWBC=0;
+title 'Effet du traitement chez les patients à faible quantité de globules blancs [<exp(2.8)]';
 run;
 
 /*Vérification de l'effet du traitement dans le groupe avec un taux élevé de globule blancs*/
 proc lifetest data=remission method=KM;
 time time*status(0);
 strata rx; where LWBC=1;
+title 'Effet du traitement chez les patients à quantité élevée de globules blancs [>exp(2.8)]';
 run;
 `````
 Les résultats ci-dessous montrent que le traitement a un impact sur les individus qui ont un faible taux de globules blancs. Dans ce groupe, ceux qui reçoivent le traitement on un temps de rémission beaucoup plus long par rapport aux autres. Toutefois, dans chez les personnes qui ont un taux élevé de globules blancs, le traitement n'a aucun effet significatif sur le temps de rémission. L'effet -quantité de globules blancs- est donc dominant sur l'effet -traitement-.
